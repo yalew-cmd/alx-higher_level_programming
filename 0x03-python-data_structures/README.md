@@ -1,2 +1,1 @@
-# Python - Data Structures: Lists, Tuples
-Foundations - Higher-level programming ― Python
+this folder contains task files for data structures

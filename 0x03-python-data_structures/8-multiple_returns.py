@@ -1,11 +1,6 @@
 #!/usr/bin/python3
-
-
 def multiple_returns(sentence):
-    """
-    A function that returns a tuple with 
-    the length of a string and its first character.
-    """
-    if sentence == "":
-        return (0, None)
-    return (len(sentence), sentence[0])
+    total_str = len(sentence)
+    char = sentence[0] if total_str > 0 else "None"
+    new_str = total_str, char
+    return(new_str)
