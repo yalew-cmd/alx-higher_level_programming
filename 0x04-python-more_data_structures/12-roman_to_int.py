@@ -1,14 +1,20 @@
 #!/usr/bin/python3
+
+
 def roman_to_int(roman_string):
-    if roman_string and type(roman_string) is str:
-        dictn = dict(I=1, V=5, X=10, L=50, C=100, D=500, M=1000)
-        value = 0
-        for a, x in zip(roman_string, roman_string[1:]):
-            if dictn[a] < dictn[x]:
-                value -= dictn[a]
+    """
+    A function that converts a Roman numeral to an integer.
+    """
+    num_map = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
+    i = 0
+    total = 0
+    if isinstance(roman_string, str):
+        for i in range(len(roman_string) - 1):
+            if num_map[roman_string[i]] >= num_map[roman_string[i + 1]]:
+                total += num_map[roman_string[i]]
             else:
-                value += dictn[a]
-        value += dictn[roman_string[-1]]
-        return value
-    else:
-        return 0
+                total -= num_map[roman_string[i]]
+            i += 1
+        total += num_map[roman_string[i]]
+        return total
+    return 0
