@@ -1,18 +1,19 @@
 #!/usr/bin/python3
-'''
-Write a function that writes an
-Object to a text file, using a
-JSON representation
-'''
+"""Add item script."""
+import sys
 
-import json
+save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
 
+try:
+    lst = load_from_json_file("add_item.json")
+except:
+    lst = []
 
-def save_to_json_file(my_obj, filename):
-    '''
-    Writes object to text file using JSON
-    '''
-    if filename is None:
-        return
-    with open(filename, 'w', encoding='utf-8') as f:
-        json_var = json.dump(my_obj, f)
+argc = len(sys.argv)
+
+if argc > 1:
+    for i in range(1, argc):
+        lst.append(sys.argv[i])
+
+save_to_json_file(lst, "add_item.json")
